@@ -10,6 +10,7 @@ import pickle
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import datetime as datetime
+import utils
 
 now = datetime.datetime.today()
 dt_string = now.strftime("%m/%d/%Y %H:%M:%S")
@@ -17,26 +18,7 @@ print("Script started at " + dt_string + "\n")
 print("------------------------------")
 s = Service(executable_path="/usr/lib/chromium-browser/chromedriver")
 
-
-def chrome_options():
-    options = webdriver.ChromeOptions()
-    options.add_argument(
-        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36"
-    )
-    options.add_argument("--headless=new")
-    options.add_argument("--no-sandbox")
-    options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    options.add_argument("disable-gpu")  ##renderer timeout
-    options.add_argument("--start-maximized")
-    options.add_experimental_option("useAutomationExtension", False)
-    options.add_argument("--disable-blink-features=AutomationControlled")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--window-size=1920,1080")
-    options.add_argument("--enable-javascript")
-    return options
-
-
-options = chrome_options()
+options = utils.chrome_options()
 
 data = {
     "events": [
@@ -112,49 +94,6 @@ for key, value in data.items():
                 )
             else:
                 print(title_event.title() + " has no tickets")
-    # elif key == "lorcana":
-    #     for event_url in value:
-    #         driver.get(event_url)
-    #         time.sleep(3)
-    #         WebDriverWait(driver, 2).until(
-    #             EC.presence_of_element_located(
-    #                 (
-    #                     By.XPATH,
-    #                     "//div[contains(@class, 'page-title')]",
-    #                 )
-    #             )
-    #         )
-    #         title_event = driver.find_element(
-    #             By.XPATH, ".//div[contains(@class, 'page-title')]"
-    #         ).text
-    #         available_tickets = driver.find_element(
-    #             By.XPATH,
-    #             ".//div[contains(@id, 'event_detail_ticket_purchase')]//following::p[1]",
-    #         ).text
-    #         event_datetime = driver.find_element(
-    #             By.XPATH,
-    #             ".//a[contains(@title, 'Find other events on this day')]",
-    #         ).text
-
-    #         event_date = event_datetime.replace(",", "").strip()
-
-    #         formatted_ticket_amount = int(
-    #             available_tickets.replace("Available Tickets: ", "").strip()
-    #         )
-    #         if formatted_ticket_amount > 0:
-    #             has_ticket = True
-    #             print("IT'S GOT TICKETS")
-    #             subject_msg = (
-    #                 str(formatted_ticket_amount) + " available: " + title_event.title()
-    #             )
-    #             type_email = "tickets"
-    #             text_notification.send_email(
-    #                 str(event_date),
-    #                 title_event.title(),
-    #                 str(formatted_ticket_amount),
-    #                 event_url,
-    #                 type_email,
-    #             )
     elif key == "hosts":
         for host_url in value:
             driver.get(host_url)
