@@ -6,3 +6,11 @@
 /selenium
 /__pycache__
 /~
+/lorcana/.env
+/lorcana/2.py
+/lorcana/test.py
+/lorcana/__pycache__
+/lorcana/lorcana.py
+/lorcana.log
+/requirements.txt
+/twitter.py

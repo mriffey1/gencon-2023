@@ -1,6 +1,8 @@
 import smtplib, ssl
 from dotenv import load_dotenv
 import os
+import tweepy
+import datetime
 
 load_dotenv()
 email = os.getenv("EMAIL")

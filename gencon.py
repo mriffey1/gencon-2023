@@ -44,15 +44,13 @@ data = {
         "https://www.gencon.com/events/235160",
         "https://www.gencon.com/events/233584",
         "https://www.gencon.com/events/235161",
-        "https://www.gencon.com/events/231163",
-        "https://www.gencon.com/events/235870",
-        "https://www.gencon.com/events/235867",
-        "https://www.gencon.com/events/235873",
-        "https://www.gencon.com/events/235877",
-        "https://www.gencon.com/events/235882",
-        "https://www.gencon.com/events/235883",
-        "https://www.gencon.com/events/235884",
-        "https://www.gencon.com/events/235866",
+        "https://www.gencon.com/events/221288",
+        "https://www.gencon.com/events/231853",
+        "https://www.gencon.com/events/231851",
+        "https://www.gencon.com/events/221289",
+        "https://www.gencon.com/events/231852",
+        "https://www.gencon.com/events/235158",
+        "https://www.gencon.com/events/220692",
     ],
     "hosts": ["https://www.gencon.com/event_finder?host=Steamforged+Games&c=indy2023"],
 }
@@ -114,7 +112,49 @@ for key, value in data.items():
                 )
             else:
                 print(title_event.title() + " has no tickets")
+    # elif key == "lorcana":
+    #     for event_url in value:
+    #         driver.get(event_url)
+    #         time.sleep(3)
+    #         WebDriverWait(driver, 2).until(
+    #             EC.presence_of_element_located(
+    #                 (
+    #                     By.XPATH,
+    #                     "//div[contains(@class, 'page-title')]",
+    #                 )
+    #             )
+    #         )
+    #         title_event = driver.find_element(
+    #             By.XPATH, ".//div[contains(@class, 'page-title')]"
+    #         ).text
+    #         available_tickets = driver.find_element(
+    #             By.XPATH,
+    #             ".//div[contains(@id, 'event_detail_ticket_purchase')]//following::p[1]",
+    #         ).text
+    #         event_datetime = driver.find_element(
+    #             By.XPATH,
+    #             ".//a[contains(@title, 'Find other events on this day')]",
+    #         ).text
 
+    #         event_date = event_datetime.replace(",", "").strip()
+
+    #         formatted_ticket_amount = int(
+    #             available_tickets.replace("Available Tickets: ", "").strip()
+    #         )
+    #         if formatted_ticket_amount > 0:
+    #             has_ticket = True
+    #             print("IT'S GOT TICKETS")
+    #             subject_msg = (
+    #                 str(formatted_ticket_amount) + " available: " + title_event.title()
+    #             )
+    #             type_email = "tickets"
+    #             text_notification.send_email(
+    #                 str(event_date),
+    #                 title_event.title(),
+    #                 str(formatted_ticket_amount),
+    #                 event_url,
+    #                 type_email,
+    #             )
     elif key == "hosts":
         for host_url in value:
             driver.get(host_url)
