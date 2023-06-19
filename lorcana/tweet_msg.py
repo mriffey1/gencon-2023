@@ -1,6 +1,6 @@
 import tweepy
 import datetime
-from utils import utils_lorcana
+import utils_lorcana
 
 dbhost, dbusername, dbpassword, dbname = utils_lorcana.database_stuff()
 
