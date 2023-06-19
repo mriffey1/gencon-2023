@@ -20,5 +20,5 @@ def send_email(event_datetime, event_title, ticket_amount, event_url, email_type
         
         # authentication of consumer key and secret
         tweet = api.create_tweet(
-            text=f"{event_title}\n{event_datetime}\n{ticket_amount} ticket(s)\n{event_url}\nChecked {dt_string}",
+            text=f"{event_title}\n{event_datetime}\n{ticket_amount} ticket(s)\n{event_url}\nTime Checked {dt_string}",
         )

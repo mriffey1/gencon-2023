@@ -1,14 +1,11 @@
 import smtplib, ssl
 from dotenv import load_dotenv
 import os
-import tweepy
-import datetime
 
 load_dotenv()
 email = os.getenv("EMAIL")
 password = os.getenv("PASSWORD")
 send_to_email = os.getenv("SENT_TO_EMAIL")
-
 
 def send_email(event_datetime, event_title, ticket_amount, event_url, email_type):
     s = smtplib.SMTP("smtp.gmail.com", 587)
