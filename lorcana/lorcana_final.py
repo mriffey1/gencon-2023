@@ -10,7 +10,6 @@ import datetime as datetime
 import mysql.connector
 import utils_lorcana
 
-
 dbhost, dbusername, dbpassword, dbname = utils_lorcana.database_stuff()
 
 now = datetime.datetime.today()
@@ -18,7 +17,6 @@ dt_string = now.strftime("%m/%d/%Y %H:%M:%S")
 print("Lorcana started at " + dt_string + "")
 
 s = Service(executable_path="/usr/lib/chromium-browser/chromedriver")
-
 
 options = utils_lorcana.chrome_options()
 
@@ -33,18 +31,10 @@ for cookie in cookies:
 driver.refresh()
 has_ticket = False
 
-# Establish a connection to the MariaDB database
-db_connection = mysql.connector.connect(
-    host=dbhost,
-    user=dbusername,
-    password=dbpassword,
-    database=dbname,
-)
+db_connection = mysql.connector.connect(host=dbhost, user=dbusername, password=dbpassword, database=dbname)
 
-# Create a cursor to execute SQL queries
 cursor = db_connection.cursor()
 
-# Query the URLs and last tweet times from the "events" table
 select_query = "SELECT url, last_tweet FROM events"
 cursor.execute(select_query)
 rows = cursor.fetchall()
@@ -54,51 +44,28 @@ for row in rows:
     last_tweet_time = row[1]  # Last tweet time retrieved from the database
 
     driver.get(url)
-    WebDriverWait(driver, 0.10).until(
-        EC.presence_of_element_located(
-            (
-                By.XPATH,
-                "//div[contains(@class, 'page-title')]",
-            )
-        )
-    )
-    title_event = driver.find_element(
-        By.XPATH, ".//div[contains(@class, 'page-title')]"
-    ).text
-    available_tickets = driver.find_element(
-        By.XPATH,
-        ".//div[contains(@id, 'event_detail_ticket_purchase')]//following::p[1]",
-    ).text
-    event_datetime = driver.find_element(
-        By.XPATH,
-        ".//a[contains(@title, 'Find other events on this day')]",
-    ).text
+    WebDriverWait(driver, 0.10).until(EC.presence_of_element_located((By.XPATH,"//div[contains(@class, 'page-title')]",)))
+    
+    title_event = driver.find_element(By.XPATH, ".//div[contains(@class, 'page-title')]").text
+    
+    available_tickets = driver.find_element(By.XPATH,".//div[contains(@id, 'event_detail_ticket_purchase')]//following::p[1]",).text
+    
+    event_datetime = driver.find_element(By.XPATH,".//a[contains(@title, 'Find other events on this day')]",).text
 
     event_date = event_datetime.replace(",", "").strip()
 
-    formatted_ticket_amount = int(
-        available_tickets.replace("Available Tickets: ", "").strip()
-    )
+    formatted_ticket_amount = int(available_tickets.replace("Available Tickets: ", "").strip())
+    
     if formatted_ticket_amount > 0:
         has_ticket = True
         print("IT'S GOT TICKETS")
-        if (
-            last_tweet_time is None
-            or (datetime.datetime.now() - last_tweet_time).total_seconds() >= 900
-        ):
-            # Enough time has passed, send a tweet
-            tweet_message = (
-                str(formatted_ticket_amount) + " available: " + title_event.title()
-            )
-            print(tweet_message)
+        if (last_tweet_time is None or (datetime.datetime.now() - last_tweet_time).total_seconds() >= 900):
+
+            tweet_message = (str(formatted_ticket_amount) + " available: " + title_event.title())
+            
+            print(tweet_message) # This prints to a log file so that I can monitor for errors and such
             type_email = "tickets"
-            text_notification.send_email(
-                str(event_date),
-                title_event.title(),
-                str(formatted_ticket_amount),
-                url,
-                type_email,
-            )
+            text_notification.send_email(str(event_date), title_event.title(), str(formatted_ticket_amount), url, type_email,)
 
             # Update the last tweet time in the database
             update_query = "UPDATE events SET last_tweet = %s WHERE url = %s"
@@ -110,7 +77,6 @@ dt_string = now.strftime("%m/%d/%Y %H:%M:%S")
 print("Script ended at " + dt_string + "")
 print("------------------------------")
 
-# Close the cursor and database connection
 cursor.close()
 db_connection.close()
 driver.quit()
