@@ -7,36 +7,23 @@ from selenium.webdriver.support.ui import WebDriverWait
 import text_msg as text_notification
 import time
 import pickle
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 import datetime as datetime
 import utils
+from utils import connect_to_database
+
+db_connection, cursor = connect_to_database()
+select_query = "SELECT url, last_msg, event_time, isPastEvent FROM gencon WHERE isPastEvent = 0"
+cursor.execute(select_query)
+rows = cursor.fetchall()
 
 now = datetime.datetime.today()
 dt_string = now.strftime("%m/%d/%Y %H:%M:%S")
-print("Script started at " + dt_string + "\n")
-print("------------------------------")
+print("Script started at " + dt_string)
 
 s = Service(executable_path="/usr/lib/chromium-browser/chromedriver")
 
 options = utils.chrome_options()
 
-data = {
-    "events": [
-        "https://www.gencon.com/events/232688",
-        "https://www.gencon.com/events/235160",
-        "https://www.gencon.com/events/233584",
-        "https://www.gencon.com/events/235161",
-        "https://www.gencon.com/events/221288",
-        "https://www.gencon.com/events/231853",
-        "https://www.gencon.com/events/231851",
-        "https://www.gencon.com/events/221289",
-        "https://www.gencon.com/events/231852",
-        "https://www.gencon.com/events/235158",
-        "https://www.gencon.com/events/220692",
-    ],
-    "hosts": ["https://www.gencon.com/event_finder?host=Steamforged+Games&c=indy2023"],
-}
 
 driver = webdriver.Chrome(service=s, options=options)
 
@@ -46,15 +33,27 @@ cookies = pickle.load(open("/home/megan/Documents/Python/gencon/cookies.pkl", "r
 for cookie in cookies:
     driver.add_cookie(cookie)
 
-time.sleep(2)
 driver.refresh()
 has_ticket = False
-for key, value in data.items():
-    if key == "events":
-        for event_url in value:
-            driver.get(event_url)
-            time.sleep(3)
-            WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, "//div[contains(@class, 'page-title')]",)))
+counter = 0
+
+for row in rows:
+    url = row[0]
+    last_msg_time = row[1] # Last msg time retrieved from the database
+    event_time_db = row[2] 
+    isPastEventDB = row[3]
+    
+    
+# Checks event time. If 5 minutes or less to the event, it gets marked as a 1 to be excluded moving forward.
+    if (event_time_db - datetime.datetime.now()).total_seconds() <= 300:
+        update_query = "UPDATE events SET isPastEvent = %s WHERE url = %s"
+        cursor.execute(update_query, (1, url))
+        db_connection.commit()
+    else:
+            driver.get(url)
+            time.sleep(0.10)
+            
+            WebDriverWait(driver, 0.10).until(EC.presence_of_element_located((By.XPATH, "//div[contains(@class, 'page-title')]",)))
             
             title_event = driver.find_element(By.XPATH, ".//div[contains(@class, 'page-title')]").text
             
@@ -65,35 +64,33 @@ for key, value in data.items():
             event_date = event_datetime.replace(",", "").strip()
 
             formatted_ticket_amount = int(available_tickets.replace("Available Tickets: ", "").strip())
+            
             if formatted_ticket_amount > 0:
                 has_ticket = True
                 print("IT'S GOT TICKETS")
-                subject_msg = (str(formatted_ticket_amount) + " available: " + title_event.title())
-                type_email = "tickets"
                 
-                text_notification.send_email(str(event_date), title_event.title(), str(formatted_ticket_amount), event_url, type_email)
+                if (last_msg_time is None or (datetime.datetime.now() - last_msg_time).total_seconds() >= 900 and isPastEventDB == 0):
+                    subject_msg = (str(formatted_ticket_amount) + " available: " + title_event.title())
+                    type_email = "tickets"
+                    text_notification.send_email(str(event_date), title_event.title(), str(formatted_ticket_amount), url, type_email)
+                    counter += 1
+                    
+                    # Update the last msg time in the database
+                    update_query = "UPDATE gencon SET last_msg = %s WHERE url = %s"
+                    cursor.execute(update_query, (datetime.datetime.now(), url))
+                    db_connection.commit()
             else:
-                print(title_event.title() + " has no tickets")
-    elif key == "hosts":
-        for host_url in value:
-            driver.get(host_url)
-            
-            host_events = driver.find_element(By.XPATH, '//*[@id="page"]/div[2]/div/div/div/div/div[2]/div[1]/p').text
-            
-            formatted_event_amount = int(host_events.replace("Found ", "").replace(" events", "").strip())
-            
-            if formatted_event_amount > 0:
-                print("Steamforged Added Events")
-                subject_msg = "Steamforged has added events"
-                type_email = "events"
-                text_notification.send_email(subject_msg, "Steamforged Games", str(formatted_event_amount), host_url, type_email)
-            print("No Steamforged Events")
+               counter = 0
 
-    else:
-        print("Unknown key:", key)
+if counter == 0:
+    print("No events have tickets")
+else:
+    print("A event has tickets")
 
 now = datetime.datetime.today()
 dt_string = now.strftime("%m/%d/%Y %H:%M:%S")
-print("Script ended at " + dt_string + "\n")
+print("Script ended at " + dt_string + ".")
 print("------------------------------")
+cursor.close()
+db_connection.close()
 driver.quit()

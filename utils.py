@@ -1,5 +1,21 @@
 from selenium import webdriver
 import datetime as datetime
+import mysql.connector
+import os
+from dotenv import load_dotenv
+
+def database_stuff():
+    dbhost = os.getenv("HOST")
+    dbusername = os.getenv("USER")
+    dbpassword = os.getenv("PASSWORD")
+    dbname = os.getenv("DATABASE")
+    return dbhost, dbusername, dbpassword, dbname
+
+def connect_to_database():
+    dbhost, dbusername, dbpassword, dbname = database_stuff()
+    db_connection = mysql.connector.connect(host=dbhost, user=dbusername, password=dbpassword, database=dbname)
+    cursor = db_connection.cursor()
+    return db_connection, cursor
 
 def chrome_options():
     options = webdriver.ChromeOptions()
