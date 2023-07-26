@@ -1,17 +1,15 @@
 
 <a name="readme-top"></a>
-
 <div align="center">
-  
-<!-- PROJECT SHIELDS -->
-[![Contributors][contributors-shield]][contributors-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+
+[![Contributors][contributors-shield]][contributors-url] [![LinkedIn][linkedin-shield]][linkedin-url]
 
 </div>
-<h3 align="center">Gen Con Scaper</h3>
+
+<h3 align="center">Gen Con Web Scraper</h3>
 
   <p align="center">
-    Web scraper that gets event ticket availabilty for Gen Con and when tickets are available, sends a text message.
+    Python script created to obtain ticket availability for  events at Gen Con and send a text message to myself when tickets are available.
 
 </div>
 
@@ -25,55 +23,63 @@
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
+        <!-- <li><a href="#features">Features</a></li> -->
       </ul>
     </li>
-    <li>
+    <!-- <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
+    </li> -->
+    <!-- <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li> -->
   </ol>
 </details>
 
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+This project was created to obtain ticket availability for sold out Gen Con events. 
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `mriffey1`, `C195-Scheduling`, `twitter_handle`, `mriffey`, `email_client`, `email`, `WGU C195 - Scheduling Application`, `project_description`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 ### Built With
-* ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
-* ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
-* ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+<div align="center">
+
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)</br>
+![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white)
+![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)</br>
+![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-C51A4A?style=for-the-badge&logo=Raspberry-Pi)
+![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+
+</div>
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- GETTING STARTED -->
+<!-- GETTING STARTED 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+It is recommended that you use virtual environments for your Python development.  
 
 ### Prerequisites
 
+The libraries needed to run this script are located in the requirements.txt file. 
+* Install requirements.txt libraries
+```sh
+pip install -r requirements.txt
+```
 This is an example of how to list things you need to use the software and how to install them.
 * [Java 17.0.3](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 * [JAVAFX.SDK.18.0.1](https://gluonhq.com/products/javafx/)
@@ -90,7 +96,7 @@ This is an example of how to list things you need to use the software and how to
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
    ```sh
-   git clone https://github.com/mriffey1/C195-Scheduling.git
+   git clone https://github.com/mriffey1/lorcana-scraper.git
    ```
 3. Install NPM packages
    ```sh
@@ -102,10 +108,10 @@ This is an example of how to list things you need to use the software and how to
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+-->
 
 
-
-<!-- USAGE EXAMPLES -->
+<!-- USAGE EXAMPLES 
 ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
@@ -114,9 +120,9 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+-->
 
-
-<!-- ROADMAP -->
+<!-- ROADMAP 
 ## Roadmap
 
 - [ ] Feature 1
@@ -124,13 +130,13 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Feature 3
     - [ ] Nested Feature
 
-See the [open issues](https://github.com/mriffey1/C195-Scheduling/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/mriffey1/lorcana-scraper/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+-->
 
 
-
-<!-- CONTRIBUTING -->
+<!-- CONTRIBUTING 
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -145,30 +151,30 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+-->
 
 
-
-<!-- LICENSE -->
+<!-- LICENSE 
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+-->
 
 
-
-<!-- CONTACT -->
+<!-- CONTACT 
 ## Contact
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
 
-Project Link: [https://github.com/mriffey1/C195-Scheduling](https://github.com/mriffey1/C195-Scheduling)
+Project Link: [https://github.com/mriffey1/lorcana-scraper](https://github.com/mriffey1/lorcana-scraper)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+-->
 
 
-
-<!-- ACKNOWLEDGMENTS -->
+<!-- ACKNOWLEDGMENTS
 ## Acknowledgments
 
 * []()
@@ -176,21 +182,21 @@ Project Link: [https://github.com/mriffey1/C195-Scheduling](https://github.com/m
 * []()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+ -->
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/mriffey1/C195-Scheduling.svg?style=for-the-badge
-[contributors-url]: https://github.com/mriffey1/C195-Scheduling/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/mriffey1/C195-Scheduling.svg?style=for-the-badge
-[forks-url]: https://github.com/mriffey1/C195-Scheduling/network/members
-[stars-shield]: https://img.shields.io/github/stars/mriffey1/C195-Scheduling.svg?style=for-the-badge
-[stars-url]: https://github.com/mriffey1/C195-Scheduling/stargazers
-[issues-shield]: https://img.shields.io/github/issues/mriffey1/C195-Scheduling.svg?style=for-the-badge
-[issues-url]: https://github.com/mriffey1/C195-Scheduling/issues
-[license-shield]: https://img.shields.io/github/license/mriffey1/C195-Scheduling.svg?style=for-the-badge
-[license-url]: https://github.com/mriffey1/C195-Scheduling/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/mriffey1/lorcana-scraper.svg?style=for-the-badge
+[contributors-url]: https://github.com/mriffey1/lorcana-scraper/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/mriffey1/lorcana-scraper.svg?style=for-the-badge
+[forks-url]: https://github.com/mriffey1/lorcana-scraper/network/members
+[stars-shield]: https://img.shields.io/github/stars/mriffey1/lorcana-scraper.svg?style=for-the-badge
+[stars-url]: https://github.com/mriffey1/lorcana-scraper/stargazers
+[issues-shield]: https://img.shields.io/github/issues/mriffey1/lorcana-scraper.svg?style=for-the-badge
+[issues-url]: https://github.com/mriffey1/lorcana-scraper/issues
+[license-shield]: https://img.shields.io/github/license/mriffey1/lorcana-scraper.svg?style=for-the-badge
+[license-url]: https://github.com/mriffey1/lorcana-scraper/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/mriffey
 [product-screenshot]: images/screenshot.png
