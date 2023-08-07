@@ -14,9 +14,6 @@ Python script created to obtain ticket availability for events at Gen Con and se
     <br />
 
 
-
-
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -25,6 +22,7 @@ Python script created to obtain ticket availability for events at Gen Con and se
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
+        <li><a href="#lessons-learned">Lessons Learned</a></li>  
       </ul>
     </li>
     <li>
@@ -47,22 +45,21 @@ Python script created to obtain ticket availability for events at Gen Con and se
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+This project was created as a way to obtain ticket availability and notify myself when tickets for specific events became available. The script was then designed to send an email, and in my specific case, I had it sent through text (via email) so I would receive the notification instantly on my phone. Below is a screenshot of what the received notification appears as. 
 
 <p align="center">
   <img src="https://github.com/mriffey1/gencon-2023/assets/88506324/5a474cd7-2b68-4884-9048-06247fc77ff3" width="150">
 </p>
 
-
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
+### Lessons Learned
+During this period, I learned a lot and went through numerous variations of the script before setting on what you see today. 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
-
 <div align="center">
-
+    
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)</br>
 ![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white)
@@ -72,7 +69,6 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
 </div>
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
