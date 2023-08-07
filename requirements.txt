@@ -1,0 +1,12 @@
+async-generator==1.10
+attrs==23.1.0
+charset-normalizer==3.1.0
+dotenv==0.0.5
+exceptiongroup==1.1.1
+h11==0.14.0
+idna==3.4
+mysql-connector-python==8.0.33
+oauthlib==3.2.2
+outcome==1.2.0
+python-dotenv==1.0.0
+selenium==4.9.1

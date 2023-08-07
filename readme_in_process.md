@@ -53,7 +53,7 @@ The script project was created to obtain ticket availability and notify me when 
 
 
 ### Built With
-* Python 3.10.8
+See the [requirements.txt]() file for more information regarding specific packages used. 
 <div align="center">
     
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
