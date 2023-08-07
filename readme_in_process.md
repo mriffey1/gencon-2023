@@ -9,9 +9,10 @@
 -->
 
 <h1 align="center">Gen Con Web Scraper</h1>
-    project_description
+Python script created to obtain ticket availability for events at Gen Con and send a text message to myself when tickets are available.
     <br />
     <br />
+
 
 
 
@@ -46,10 +47,13 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+
+<p align="center">
+  <img src="https://github.com/mriffey1/gencon-2023/assets/88506324/5a474cd7-2b68-4884-9048-06247fc77ff3" width="150">
+</p>
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
