@@ -37,7 +37,7 @@ Python script created to obtain ticket availability for events at Gen Con and se
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
-
+<br />
 
 
 
