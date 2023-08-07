@@ -11,6 +11,7 @@ import datetime as datetime
 import utils
 from utils import connect_to_database
 
+
 db_connection, cursor = connect_to_database()
 rows = utils.fetch_events_to_update(cursor)
 
