@@ -8,21 +8,19 @@
 *** Thanks again! Now go create something AMAZING! :D
 -->
 
-<h1 align="center">Gen Con Web Scraper</h1>
+# Gen Con Web Scraper
 Python script created to obtain ticket availability for events at Gen Con and send a text message to myself when tickets are available.
-    <br />
     <br />
 
 
 <!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
+
+## Table of Contents
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
-        <li><a href="#lessons-learned">Lessons Learned</a></li>  
+        <li><a href="#built-with">Built With</a></li> 
       </ul>
     </li>
     <li>
@@ -39,13 +37,13 @@ Python script created to obtain ticket availability for events at Gen Con and se
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
-</details>
+
 
 
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-This project was created as a way to obtain ticket availability and notify myself when tickets for specific events became available. The script was then designed to send an email, and in my specific case, I had it sent through text (via email) so I would receive the notification instantly on my phone. Below is a screenshot of what the received notification appears as. 
+The script project was created to obtain ticket availability and notify me when tickets for specific events became available. The script was then designed to send an email, and in my particular case, I had it sent through text (via email) so I would receive the notification instantly on my phone. Below is a screenshot of the text message notification. 
 
 <p align="center">
   <img src="https://github.com/mriffey1/gencon-2023/assets/88506324/5a474cd7-2b68-4884-9048-06247fc77ff3" width="150">
@@ -53,11 +51,9 @@ This project was created as a way to obtain ticket availability and notify mysel
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Lessons Learned
-During this period, I learned a lot and went through numerous variations of the script before setting on what you see today. 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
+* Python 3.10.8
 <div align="center">
     
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
